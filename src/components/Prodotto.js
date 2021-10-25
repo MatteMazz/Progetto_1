@@ -8,23 +8,23 @@ import { CardActionArea } from "@mui/material";
 
 export default function Prod(props) {
   return (
-    <Card>
-      <CardActionArea href={`/det/${props.id}`}>
+    <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
+      <CardActionArea href={props.det ? "/" : `/det/${props.prod.id}`}>
         <CardMedia
           component="img"
           height="auto"
-          image={props.img}
+          image="https://via.placeholder.com/350"
           alt="prodotto"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.name}
+            {props.prod.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {props.price}
+          <Typography sx={{fontSize: 15}} variant="body2" color="text.secondary">
+            {props.prod.price}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {props.availability.stock > 0 ? (
+          <Typography sx={{marginTop: 1}} variant="body2" color="text.secondary">
+            {props.prod.availability.stock > 0 ? (
               <Chip label="In stock" />
             ) : (
               <Chip label="Out of stock" variant="outlined" />
