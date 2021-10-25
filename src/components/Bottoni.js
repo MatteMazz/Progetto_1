@@ -2,32 +2,28 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-export default function Bottoni(props) {
+export default function Bottoni({ selected, setSelected }) {
   return (
-    <ButtonGroup sx={{ marginTop: 3 }}>
+    <ButtonGroup sx={{ marginTop: 2.5 }}>
       <Button
-        variant={value === "in" ? "contained" : "outlined"}
+        variant={selected === "in" ? "contained" : "outlined"}
         onClick={() => {
-          if (value === "in") {
-            setToggle("none");
-            props.updateToggle("none");
+          if (selected === "in") {
+            setSelected("none");
           } else {
-            setToggle("in");
-            props.updateToggle("in");
+            setSelected("in");
           }
         }}
       >
         IN STOCK
       </Button>
       <Button
-        variant={value === "out" ? "contained" : "outlined"}
+        variant={selected === "out" ? "contained" : "outlined"}
         onClick={() => {
-          if (value === "out") {
-            setToggle("none");
-            props.updateToggle("none");
+          if (selected === "out") {
+            setSelected("none");
           } else {
-            setToggle("in");
-            props.updateToggle("in");
+            setSelected("out");
           }
         }}
       >
@@ -36,17 +32,3 @@ export default function Bottoni(props) {
     </ButtonGroup>
   );
 }
-
-// type Props = {
-//   setInStock: (flag?: boolean) => void
-//   inStock?: boolean
-// }
-
-// const Menu: React.FC<Props> = ({ setInStock, inStock }) => {
-//   return (
-//     <ButtonGroup variant="contained" >
-//       <Button variant={inStock === true ? 'contained' : 'outlined'} onClick={() => setInStock(inStock === undefined ? true : undefined)}>In Stock</Button>
-//       <Button variant={inStock === false ? 'contained' : 'outlined'} onClick={() => setInStock(inStock === undefined ? false : undefined)}>Out of Stock</Button>
-//     </ButtonGroup>
-//   )
-// }

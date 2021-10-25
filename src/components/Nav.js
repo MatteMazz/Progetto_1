@@ -5,24 +5,29 @@ import Grid from "@mui/material/Grid";
 import Bottoni from "./Bottoni";
 import Cerca from "./Cerca";
 
-export default function Nav(props) {
-  function cerca(text) {
-    props.cerca(text);
-  }
-
+export default function Nav({
+  searchTerm,
+  setSearchTerm,
+  selected,
+  setSelected,
+}) {
   return (
     <React.Fragment>
       <CssBaseline />
       <Box sx={{ borderBottom: 1, display: "block" }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <img src="https://via.placeholder.com/150x80" alt="pord"></img>
+            <img
+              style={{ display: "block" }}
+              src="https://via.placeholder.com/150x80"
+              alt="pord"
+            ></img>
           </Grid>
           <Grid item xs={4}>
-            <Bottoni toggle={props.toggle} />
+            <Bottoni selected={selected} setSelected={setSelected} />
           </Grid>
           <Grid item xs={4}>
-            <Cerca cerca={cerca} />
+            <Cerca searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Grid>
         </Grid>
       </Box>

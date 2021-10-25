@@ -5,14 +5,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Grid } from "@mui/material";
 
-export default function Cerca(props) {
-  const [text, setText] = useState("");
-
-  function reset() {
-    setText("");
-    props.cerca("");
-  }
-
+export default function Cerca({ searchTerm, setSearchTerm }) {
   return (
     <Box
       sx={{
@@ -26,10 +19,9 @@ export default function Cerca(props) {
             id="outlined-basic"
             label="Search"
             variant="outlined"
-            value={text}
+            value={searchTerm}
             onChange={(e) => {
-              props.cerca(e.target.value);
-              setText(e.target.value);
+              setSearchTerm(e.target.value);
             }}
           />
         </Grid>
@@ -38,7 +30,7 @@ export default function Cerca(props) {
             sx={{ marginTop: 1 }}
             variant="contained"
             onClick={() => {
-              reset();
+              setSearchTerm("");
             }}
           >
             Reset

@@ -7,32 +7,30 @@ import Footer from "./Footer.js";
 import { totProds } from "../data/Data";
 
 export default function Prodotti() {
-  // const [inStock, setInStock] = useState<boolean | undefined>(undefined)
-  const [toggle, setToggle] = useState("none");
-  const [prods, setProds] = useState(totProds);
+  const [selected, setSelected] = useState("none");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const cerca = (text) => {
-    var newProds = totProds.filter((prod) => {
-      const searchName = prod.name.toLowerCase().includes(text);
-      const searchPrice = prod.price.toLowerCase().includes(text);
-      return searchName || searchPrice ? true : false;
-    });
-    setProds(newProds);
+  const search = (prod) => {
+    const searchName = prod.name.toLowerCase().includes(searchTerm);
+    const searchPrice = prod.price.toLowerCase().includes(searchTerm);
+    return searchName || searchPrice ? true : false;
   };
 
-  const selected = (value) => {
-    var newProds = totProds.filter((prod) => {
-      const inStock = value === "in" && prod.availability.stock > 0;
-      const outStock = value === "out" && prod.availability.stock <= 0;
-      return inStock || outStock ? true : false;
-    });
-    setToggle(newProds);
+  const toggle = (prod) => {
+    const inStock = selected === "in" && prod.availability.stock > 0;
+    const outStock = selected === "out" && prod.availability.stock <= 0;
+    return inStock || outStock || selected === "none" ? true : false;
   };
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" minHeight="100vh">
       <Grid item xs={12}>
-        <Nav cerca={cerca} toggle={selected} />
+        <Nav
+          selected={selected}
+          setSelected={setSelected}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       </Grid>
       <Grid item xs={12}>
         <Grid
@@ -42,12 +40,14 @@ export default function Prodotti() {
           spacing={2}
           columns={{ xs: 2, sm: 8, md: 12 }}
         >
-          {/* .filter(product => inStock === undefined ? true : inStock ? product.availability.stock > 0 : product.availability.stock === 0) */}
-          {prods?.map((prod, index) => (
-            <Grid item xs={3} sm={3} md={3} key={index}>
-              <Prod prod={prod} det={false} />
-            </Grid>
-          ))}
+          {totProds
+            ?.filter(toggle)
+            .filter(search)
+            .map((prod, index) => (
+              <Grid item xs={3} sm={3} md={3} key={index}>
+                <Prod prod={prod} det={false} />
+              </Grid>
+            ))}
         </Grid>
       </Grid>
       <Grid item xs={12}>

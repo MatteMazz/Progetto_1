@@ -20,10 +20,18 @@ export default function Prod(props) {
           <Typography gutterBottom variant="h5" component="div">
             {props.prod.name}
           </Typography>
-          <Typography sx={{fontSize: 15}} variant="body2" color="text.secondary">
+          <Typography
+            sx={{ fontSize: 15 }}
+            variant="body2"
+            color="text.secondary"
+          >
             {props.prod.price}
           </Typography>
-          <Typography sx={{marginTop: 1}} variant="body2" color="text.secondary">
+          <Typography
+            sx={{ marginTop: 1 }}
+            variant="body2"
+            color="text.secondary"
+          >
             {props.prod.availability.stock > 0 ? (
               <Chip label="In stock" />
             ) : (
