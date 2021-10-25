@@ -16,17 +16,17 @@ export default function Nav({
       <CssBaseline />
       <Box sx={{ borderBottom: 1, display: "block" }}>
         <Grid container spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4} md={4}>
             <img
               style={{ display: "block" }}
               src="https://via.placeholder.com/150x80"
-              alt="pord"
+              alt="prod"
             ></img>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4} md={4}>
             <Bottoni selected={selected} setSelected={setSelected} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4} md={4}>
             <Cerca searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Grid>
         </Grid>

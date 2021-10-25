@@ -12,8 +12,7 @@ export default function Prodotti() {
 
   const search = (prod) => {
     const searchName = prod.name.toLowerCase().includes(searchTerm);
-    const searchPrice = prod.price.toLowerCase().includes(searchTerm);
-    return searchName || searchPrice ? true : false;
+    return searchName ? true : false;
   };
 
   const toggle = (prod) => {
@@ -23,7 +22,7 @@ export default function Prodotti() {
   };
 
   return (
-    <Grid container direction="column" minHeight="100vh">
+    <Grid container direction="column" style={{ minHeight: "100vh" }}>
       <Grid item xs={12}>
         <Nav
           selected={selected}
@@ -32,19 +31,22 @@ export default function Prodotti() {
           setSearchTerm={setSearchTerm}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid flex={1} item xs={12}>
         <Grid
-          minHeight="100vh"
+          pt={2}
+          pr={2}
+          pb={2.5}
+          pl={2}
+          
           container
-          p={2}
-          spacing={2}
+          spacing={{ xs: 1, md: 2 }}
           columns={{ xs: 2, sm: 8, md: 12 }}
         >
           {totProds
             ?.filter(toggle)
             .filter(search)
             .map((prod, index) => (
-              <Grid item xs={3} sm={3} md={3} key={index}>
+              <Grid item xs={2} sm={4} md={3} key={index}>
                 <Prod prod={prod} det={false} />
               </Grid>
             ))}

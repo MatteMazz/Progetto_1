@@ -9,7 +9,7 @@ import { CardActionArea } from "@mui/material";
 export default function Prod(props) {
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
-      <CardActionArea href={props.det ? "/" : `/det/${props.prod.id}`}>
+      <CardActionArea href={props.det ? "/" : `/det/${props.prod.UPC}`}>
         <CardMedia
           component="img"
           height="auto"
@@ -25,7 +25,7 @@ export default function Prod(props) {
             variant="body2"
             color="text.secondary"
           >
-            {props.prod.price}
+            $ {props.prod.price.current.value}
           </Typography>
           <Typography
             sx={{ marginTop: 1 }}
