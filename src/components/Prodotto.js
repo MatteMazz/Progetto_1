@@ -9,7 +9,9 @@ import { CardActionArea } from "@mui/material";
 export default function Prod(props) {
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
-      <CardActionArea href={props.det ? "/" : `/det/${props.prod.UPC}`}>
+      <CardActionArea
+        href={props.det ? "/Progetto_1" : `/det/${props.prod.UPC}`}
+      >
         <CardMedia
           component="img"
           height="auto"
