@@ -33,10 +33,7 @@ export default function Prodotti() {
       </Grid>
       <Grid flex={1} item xs={12}>
         <Grid
-          pt={2}
-          pr={2}
-          pb={2.5}
-          pl={2}
+          p={2}
           container
           spacing={{ xs: 1, md: 2 }}
           columns={{ xs: 2, sm: 8, md: 12 }}
