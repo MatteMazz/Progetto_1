@@ -10,7 +10,7 @@ export default function Prod(props) {
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
       <CardActionArea
-        href={props.det ? "/Progetto_1" : `/det/${props.prod.UPC}`}
+        href={props.det ? "/progetto_1" : `/det/${props.prod.UPC}`}
       >
         <CardMedia
           component="img"
