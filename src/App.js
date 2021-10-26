@@ -1,14 +1,12 @@
 import Dettaglio from "./components/Dettaglio";
 import Prodotti from "./components/Prodotti";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/det/:UPC" component={Dettaglio} />
-        <Route path="/progetto_1" component={Prodotti} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route path="/det/:UPC" component={Dettaglio} />
+      <Route path="/" component={Prodotti} />
+    </Switch>
   );
 }

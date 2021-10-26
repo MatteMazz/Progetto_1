@@ -5,12 +5,16 @@ import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
 import { CardActionArea } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 export default function Prod(props) {
+  var history = useHistory();
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
       <CardActionArea
-        href={props.det ? "/progetto_1" : `/det/${props.prod.UPC}`}
+        onClick={() =>
+          history.push(props.det ? "/progetto_1" : `/det/${props.prod.UPC}`)
+        }
       >
         <CardMedia
           component="img"
