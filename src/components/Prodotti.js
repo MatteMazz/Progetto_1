@@ -37,7 +37,6 @@ export default function Prodotti() {
           pr={2}
           pb={2.5}
           pl={2}
-          
           container
           spacing={{ xs: 1, md: 2 }}
           columns={{ xs: 2, sm: 8, md: 12 }}
