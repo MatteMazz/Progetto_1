@@ -1,7 +1,6 @@
 import Dettaglio from "./components/Dettaglio";
 import Prodotti from "./components/Prodotti";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Switch } from "@mui/material";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default function App() {
   return (
