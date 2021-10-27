@@ -19,7 +19,7 @@ export default function Prod(props) {
           component="img"
           height="auto"
           image="https://via.placeholder.com/350"
-          alt="prodotto"
+          alt="product"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
