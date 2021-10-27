@@ -12,9 +12,7 @@ export default function Prod(props) {
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
       <CardActionArea
-        onClick={() =>
-          history.push(props.det ? "/progetto_1" : `/det/${props.prod.UPC}`)
-        }
+        onClick={() => history.push(props.det ? "/" : `/det/${props.prod.UPC}`)}
       >
         <CardMedia
           component="img"
