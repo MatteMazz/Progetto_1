@@ -1,8 +1,8 @@
 import * as React from "react";
-import Prod from "./Prodotto";
+import Prod from "./SingleProduct";
 import { totProds } from "../data/Data";
 
-export default function Dettaglio(props) {
+export default function Detail(props) {
   return (
     <Prod
       prod={totProds.find((prod) => prod.UPC === props.match.params.UPC)}

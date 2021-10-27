@@ -2,8 +2,8 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Bottoni from "./Bottoni";
-import Cerca from "./Cerca";
+import Buttons from "./Buttons";
+import Search from "./Search";
 
 export default function Nav({
   searchTerm,
@@ -24,10 +24,10 @@ export default function Nav({
             ></img>
           </Grid>
           <Grid item xs={12} sm={4} md={4}>
-            <Bottoni selected={selected} setSelected={setSelected} />
+            <Buttons selected={selected} setSelected={setSelected} />
           </Grid>
           <Grid item xs={12} sm={4} md={4}>
-            <Cerca searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Grid>
         </Grid>
       </Box>

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
-import Prod from "./Prodotto.js";
+import Prod from "./SingleProduct.js";
 import Nav from "./Nav";
 import Footer from "./Footer.js";
 import { totProds } from "../data/Data";
 
-export default function Prodotti() {
+export default function Products() {
   const [selected, setSelected] = useState("none");
   const [searchTerm, setSearchTerm] = useState("");
 

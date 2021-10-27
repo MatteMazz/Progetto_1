@@ -11,8 +11,12 @@ export default function Footer() {
         backgroundColor: "#BDBDBD",
       }}
     >
-      <Link href="https://twitter.com/?lang=it">TWITTER | </Link>
-      <Link href="https://www.facebook.com/">FACEBOOK</Link>
+      <Link href="https://twitter.com/?lang=it" target="_blank">
+        TWITTER |{" "}
+      </Link>
+      <Link href="https://www.facebook.com/" target="_blank">
+        FACEBOOK
+      </Link>
     </Box>
   );
 }
