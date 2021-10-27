@@ -4,15 +4,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
-import { CardActionArea } from "@mui/material";
-import { useHistory } from "react-router-dom";
+import Link from "@mui/material/Link";
 
 export default function Prod(props) {
-  var history = useHistory();
+  // var history = useHistory();
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
-      <CardActionArea
-        onClick={() => history.push(props.det ? "/" : `/det/${props.prod.UPC}`)}
+      <Link
+        sx={{ color: "#333", textDecoration: "none" }}
+        // onClick={() => history.push(props.det ? "/" : `/det/${props.prod.UPC}`)}
+        href={props.det ? "/" : `/det/${props.prod.UPC}`}
       >
         <CardMedia
           component="img"
@@ -43,7 +44,7 @@ export default function Prod(props) {
             )}
           </Typography>
         </CardContent>
-      </CardActionArea>
+      </Link>
     </Card>
   );
 }
