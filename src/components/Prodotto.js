@@ -4,14 +4,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 
 export default function Prod(props) {
   // var history = useHistory();
   return (
     <Card sx={props.det ? { margin: 5, maxWidth: 500 } : {}}>
       <Link
-        sx={{ color: "#333", textDecoration: "none" }}
+        style={{ color: "#333", textDecoration: "none" }}
         // onClick={() => history.push(props.det ? "/" : `/det/${props.prod.UPC}`)}
         to={props.det ? "/" : `/det/${props.prod.UPC}`}
       >
