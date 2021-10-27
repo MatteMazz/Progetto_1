@@ -13,7 +13,7 @@ export default function Prod(props) {
       <Link
         sx={{ color: "#333", textDecoration: "none" }}
         // onClick={() => history.push(props.det ? "/" : `/det/${props.prod.UPC}`)}
-        href={props.det ? "/" : `/det/${props.prod.UPC}`}
+        to={props.det ? "/" : `/det/${props.prod.UPC}`}
       >
         <CardMedia
           component="img"
