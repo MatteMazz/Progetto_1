@@ -1,8 +1,12 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-export default function Buttons({ selected, setSelected }) {
+type Props = {
+  selected: string;
+  setSelected: (selected: string) => void;
+};
+
+export const Buttons: React.FC<Props> = ({ selected, setSelected }) => {
   return (
     <ButtonGroup sx={{ marginTop: 2.5 }}>
       <Button
@@ -31,4 +35,4 @@ export default function Buttons({ selected, setSelected }) {
       </Button>
     </ButtonGroup>
   );
-}
+};

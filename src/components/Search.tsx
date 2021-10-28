@@ -1,10 +1,14 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Grid } from "@mui/material";
 
-export default function Cerca({ searchTerm, setSearchTerm }) {
+type Props = {
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
+};
+
+export const Search: React.FC<Props> = ({ searchTerm, setSearchTerm }) => {
   return (
     <Box
       sx={{
@@ -38,4 +42,4 @@ export default function Cerca({ searchTerm, setSearchTerm }) {
       </Grid>
     </Box>
   );
-}
+};

@@ -1,21 +1,20 @@
-import * as React from "react";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
-import Prod from "./SingleProduct.js";
-import Nav from "./Nav";
-import Footer from "./Footer.js";
+import { Prod } from "./SingleProduct";
 import { totProds } from "../data/Data";
+import { Nav } from "./Nav";
+import { Footer } from "./Footer";
 
-export default function Products() {
-  const [selected, setSelected] = useState("none");
-  const [searchTerm, setSearchTerm] = useState("");
+export const Home: React.FC = () => {
+  const [selected, setSelected] = useState<string>("none");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const search = (prod) => {
+  const search = (prod: { name: string }) => {
     const searchName = prod.name.toLowerCase().includes(searchTerm);
     return searchName ? true : false;
   };
 
-  const toggle = (prod) => {
+  const toggle = (prod: { availability: { stock: number } }) => {
     const inStock = selected === "in" && prod.availability.stock > 0;
     const outStock = selected === "out" && prod.availability.stock <= 0;
     return inStock || outStock || selected === "none" ? true : false;
@@ -53,4 +52,4 @@ export default function Products() {
       </Grid>
     </Grid>
   );
-}
+};

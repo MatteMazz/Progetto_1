@@ -2,15 +2,22 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Buttons from "./Buttons";
-import Search from "./Search";
+import { Buttons } from "./Buttons";
+import { Search } from "./Search";
 
-export default function Nav({
+type Props = {
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
+  selected: string;
+  setSelected: (selected: string) => void;
+};
+
+export const Nav: React.FC<Props> = ({
   searchTerm,
   setSearchTerm,
   selected,
   setSelected,
-}) {
+}) => {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -33,4 +40,4 @@ export default function Nav({
       </Box>
     </React.Fragment>
   );
-}
+};

@@ -1,4 +1,19 @@
-export const totProds = [
+export type Products = {
+  UPC: string;
+  name: string;
+  price: {
+    current: {
+      value: number;
+    };
+    currency: string;
+  };
+  availability: {
+    stock: number;
+  };
+  variants: any;
+};
+
+export const totProds: Products[] = [
   {
     UPC: "1",
     name: "Turbine™ Rotor",
