@@ -10,7 +10,7 @@ export const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const search = (prod: { name: string }) => {
-    const searchName = prod.name.toLowerCase().includes(searchTerm);
+    const searchName = prod.name.toUpperCase().includes(searchTerm);
     return searchName ? true : false;
   };
 
