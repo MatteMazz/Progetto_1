@@ -1,55 +1,91 @@
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Chip from "@mui/material/Chip";
-import Card from "@mui/material/Card";
-import { ProdDescription } from "../model/ProductDescription";
-import { Link } from "react-router-dom";
+import { Product } from "../data/Data";
+import { CssBaseline } from "@mui/material";
+import styled from "styled-components";
 
 type Props = {
-  prod: ProdDescription;
+  prod: Product;
   det: boolean;
 };
+
+const CardProd = styled.div`
+  width: 97%;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px #999;
+
+  &.active {
+    width: 500px;
+    margin: 30px 0 0 30px;
+
+    @media screen and (max-width: 576px) {
+      width: 90%;
+      margin: 10px auto;
+    }
+  }
+`;
+
+const CardLink = styled.a`
+  color: #333;
+  text-decoration: none;
+`;
+
+const CardImg = styled.img`
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: auto;
+`;
+
+const CardCont = styled.div`
+  padding: 8px 16px 24px 16px;
+`;
+
+const CardTitle = styled.h5`
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  margin: 0;
+`;
+
+const CardText = styled.p`
+  font-size: 1rem;
+  color: #777;
+  margin: 0 0 15px 0;
+`;
+
+const CardInStock = styled.span`
+  padding: 8px 12px;
+  color: #333;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: #00000014;
+`;
+
+const CardOutStock = styled.span`
+  display: none;
+`;
 
 export const Prod: React.FC<Props> = ({ prod, det }) => {
   return (
     prod && (
-      <Card sx={det ? { margin: 5, maxWidth: 500 } : {}}>
-        <Link
-          style={{ color: "#333", textDecoration: "none" }}
-          to={det ? "/" : `/det/${prod.UPC}`}
-        >
-          <CardMedia
-            component="img"
-            height="auto"
-            image="https://via.placeholder.com/350"
-            alt="product"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {prod.name}
-            </Typography>
-            <Typography
-              sx={{ fontSize: 15 }}
-              variant="body2"
-              color="text.secondary"
-            >
-              $ {prod.price.current.value}
-            </Typography>
-            <Typography
-              sx={{ marginTop: 1 }}
-              variant="body2"
-              color="text.secondary"
-            >
+      <CardProd className={det ? "active" : undefined}>
+        <CssBaseline />
+        <CardLink href={det ? "/" : `/det/${prod.UPC}`}>
+          <CardImg src="https://via.placeholder.com/350" />
+          <CardCont>
+            <CardTitle>{prod.name}</CardTitle>
+            <CardText>$ {prod.price.current.value}</CardText>
+            <div>
               {prod.availability.stock > 0 ? (
-                <Chip label="In stock" />
+                <CardInStock>in stock</CardInStock>
               ) : (
-                <Chip label="Out of stock" variant="outlined" />
+                <CardOutStock>out of stock</CardOutStock>
               )}
-            </Typography>
-          </CardContent>
-        </Link>
-      </Card>
+            </div>
+          </CardCont>
+        </CardLink>
+      </CardProd>
     )
   );
 };

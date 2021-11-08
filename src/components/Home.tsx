@@ -1,13 +1,46 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import { Prod } from "./SingleProduct";
 import { totProds } from "../data/Data";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
+import styled from "styled-components";
+
+const Container = styled.div`
+  position: relative;
+  min-height: 100vh;
+`;
+
+const HomeCardContainer = styled.div`
+  width: 99%;
+  margin: 20px auto 0 auto;
+  padding-bottom: 80px;
+`;
+
+const HomeCardGrid = styled.div`
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 15px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: 33.3% 33.3% 33.3%;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 50% 50%;
+  }
+
+  @media screen and (max-width: 576px) {
+    grid-template-columns: 100%;
+  }
+`;
+
+const HomeCardItems = styled.div`
+  justify-self: stretch;
+`;
 
 export const Home: React.FC = () => {
-  const [selected, setSelected] = useState<string>("none");
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selected, setSelected] = useState("none" || "in" || "out");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const search = (prod: { name: string }) => {
     const searchName = prod.name.toLowerCase().includes(searchTerm);
@@ -21,35 +54,27 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <Grid container direction="column" style={{ minHeight: "100vh" }}>
-      <Grid item xs={12}>
-        <Nav
-          selected={selected}
-          setSelected={setSelected}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-        />
-      </Grid>
-      <Grid flex={1} item xs={12}>
-        <Grid
-          p={2}
-          container
-          spacing={{ xs: 1, md: 2 }}
-          columns={{ xs: 2, sm: 8, md: 12 }}
-        >
+    <Container>
+      <Nav
+        selected={selected}
+        setSelected={setSelected}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onClick={function (click: any): void {}}
+      />
+      <HomeCardContainer>
+        <HomeCardGrid>
           {totProds
             ?.filter(toggle)
             .filter(search)
             .map((prod, index) => (
-              <Grid item xs={2} sm={4} md={3} key={index}>
+              <HomeCardItems key={index}>
                 <Prod prod={prod} det={false} />
-              </Grid>
+              </HomeCardItems>
             ))}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Footer />
-      </Grid>
-    </Grid>
+        </HomeCardGrid>
+      </HomeCardContainer>
+      <Footer />
+    </Container>
   );
 };
