@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Prod } from "./SingleProduct";
-import { totProds } from "../data/Data";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import styled from "styled-components";
+import { Product } from "../data/Data";
 
 const Container = styled.div`
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   position: relative;
   min-height: 100vh;
 `;
@@ -38,7 +39,11 @@ const HomeCardItems = styled.div`
   justify-self: stretch;
 `;
 
-export const Home: React.FC = () => {
+type Props = {
+  data: Product[];
+};
+
+export const Home: React.FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState("none" || "in" || "out");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -64,7 +69,7 @@ export const Home: React.FC = () => {
       />
       <HomeCardContainer>
         <HomeCardGrid>
-          {totProds
+          {data
             ?.filter(toggle)
             .filter(search)
             .map((prod, index) => (
