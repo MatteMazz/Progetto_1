@@ -1,4 +1,4 @@
-import { Prod } from "./SingleProduct";
+import { Prod } from "../components/SingleProduct";
 import { Product } from "../data/Data";
 import { useParams } from "react-router-dom";
 

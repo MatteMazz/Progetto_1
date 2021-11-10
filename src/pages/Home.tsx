@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { Nav } from "./Nav";
-import { Prod } from "./SingleProduct";
+import { Nav } from "../components/Nav";
+import { Prod } from "../components/SingleProduct";
 import { Product } from "../data/Data";
-import { Footer } from "./Footer";
+import { Footer } from "../components/Footer";
 import { RootState } from "../app/store";
 
 const Container = styled.div`

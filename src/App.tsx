@@ -1,5 +1,5 @@
-import { Detail } from "./components/Detail";
-import { Home } from "./components/Home";
+import { Detail } from "./pages/Detail";
+import { Home } from "./pages/Home";
 import { Route, Switch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Product } from "./data/Data";

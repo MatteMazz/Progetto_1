@@ -4,7 +4,7 @@ import { RootState } from "../app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { keyframes } from "styled-components";
 import styled from "styled-components";
-import { setSearchTerm } from "../features/counter/searchSlice";
+import { setSearchTerm } from "../features/slicers/searchSlice";
 
 type Props = {
   onClick: (click: any) => void;

@@ -3,7 +3,7 @@ import { keyframes } from "styled-components";
 import styled from "styled-components";
 import { RootState } from "../app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setToggle } from "../features/counter/toggleSlice";
+import { setToggle } from "../features/slicers/toggleSlice";
 
 type Props = {
   onClick: (click: any) => void;
