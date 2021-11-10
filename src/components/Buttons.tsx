@@ -153,7 +153,7 @@ export const Buttons: React.FC<Props> = ({ onClick }) => {
     if (!isRipplingRight) setCoordsRight({ x: -1, y: -1 });
   }, [isRipplingRight]);
 
-  const toggle = useSelector((state: RootState) => state.search.value);
+  const toggle = useSelector((state: RootState) => state.toggle.value);
   const dispatch = useDispatch();
 
   return (

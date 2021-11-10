@@ -20,7 +20,5 @@ export const toggleSlice = createSlice({
 });
 
 export const { setToggle } = toggleSlice.actions;
-
-export const selectToggle = (state: RootState) => state.search.value;
-
+export const selectToggle = (state: RootState) => state.toggle.value;
 export default toggleSlice.reducer;
