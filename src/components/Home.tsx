@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Prod } from "./SingleProduct";
-import { Nav } from "./Nav";
-import { Footer } from "./Footer";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { Nav } from "./Nav";
+import { Prod } from "./SingleProduct";
 import { Product } from "../data/Data";
+import { Footer } from "./Footer";
+import { RootState } from "../app/store";
 
 const Container = styled.div`
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -30,7 +31,7 @@ const HomeCardGrid = styled.div`
     grid-template-columns: 50% 50%;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (togglemax-width: 576px) {
     grid-template-columns: 100%;
   }
 `;
@@ -44,34 +45,24 @@ type Props = {
 };
 
 export const Home: React.FC<Props> = ({ data }) => {
-  const [selected, setSelected] = useState("none" || "in" || "out");
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const search = (prod: { name: string }) => {
-    const searchName = prod.name.toLowerCase().includes(searchTerm);
-    return searchName ? true : false;
-  };
-
-  const toggle = (prod: { availability: { stock: number } }) => {
-    const inStock = selected === "in" && prod.availability.stock > 0;
-    const outStock = selected === "out" && prod.availability.stock <= 0;
-    return inStock || outStock || selected === "none" ? true : false;
-  };
+  const toggle = useSelector((state: RootState) => state.toggle.value);
+  const searchTerm = useSelector((state: RootState) => state.search.value);
 
   return (
     <Container>
-      <Nav
-        selected={selected}
-        setSelected={setSelected}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        onClick={function (click: any): void {}}
-      />
+      <Nav onClick={function (click: any): void {}} />
       <HomeCardContainer>
         <HomeCardGrid>
           {data
-            ?.filter(toggle)
-            .filter(search)
+            ?.filter((prod: { availability: { stock: number } }) => {
+              const inStock = toggle === "in" && prod.availability.stock > 0;
+              const outStock = toggle === "out" && prod.availability.stock <= 0;
+              return inStock || outStock || toggle === "none" ? true : false;
+            })
+            .filter((prod: { name: string }) => {
+              const searchName = prod.name.toLowerCase().includes(searchTerm);
+              return searchName ? true : false;
+            })
             .map((prod, index) => (
               <HomeCardItems key={index}>
                 <Prod prod={prod} det={false} />

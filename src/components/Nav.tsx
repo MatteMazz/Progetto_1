@@ -5,10 +5,6 @@ import { Search } from "./Search";
 import styled from "styled-components";
 
 type Props = {
-  searchTerm: string;
-  setSearchTerm: (searchTerm: string) => void;
-  selected: string;
-  setSelected: (selected: string) => void;
   onClick: (click: any) => void;
 };
 
@@ -40,13 +36,7 @@ const NavImg = styled.img`
   }
 `;
 
-export const Nav: React.FC<Props> = ({
-  searchTerm,
-  setSearchTerm,
-  selected,
-  setSelected,
-  onClick,
-}) => {
+export const Nav: React.FC<Props> = ({ onClick }) => {
   return (
     <React.Fragment>
       <NavBox>
@@ -55,18 +45,10 @@ export const Nav: React.FC<Props> = ({
           <NavImg src="https://via.placeholder.com/150x80"></NavImg>
         </NavItems>
         <NavItems>
-          <Buttons
-            selected={selected}
-            setSelected={setSelected}
-            onClick={onClick}
-          />
+          <Buttons onClick={onClick} />
         </NavItems>
         <NavItems>
-          <Search
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            onClick={onClick}
-          />
+          <Search onClick={onClick} />
         </NavItems>
       </NavBox>
     </React.Fragment>

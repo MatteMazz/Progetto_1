@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { RootState } from "../app/store";
+import { useSelector, useDispatch } from "react-redux";
 import { keyframes } from "styled-components";
 import styled from "styled-components";
+import { setSearchTerm } from "../features/counter/searchSlice";
 
 type Props = {
-  searchTerm: string;
-  setSearchTerm: (searchTerm: string) => void;
   onClick: (click: any) => void;
 };
 
@@ -146,11 +147,10 @@ const BlueButton = styled.button`
   }
 `;
 
-export const Search: React.FC<Props> = ({
-  searchTerm,
-  setSearchTerm,
-  onClick,
-}) => {
+export const Search: React.FC<Props> = ({ onClick }) => {
+  const searchTerm = useSelector((state: RootState) => state.search.value);
+  const dispatch = useDispatch();
+
   const [coords, setCoords] = useState({ x: -1, y: -1 });
   const [isRippling, setIsRippling] = useState(false);
 
@@ -172,7 +172,7 @@ export const Search: React.FC<Props> = ({
           <SearchBoxField>
             {" "}
             <SearchField
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => dispatch(setSearchTerm(e.target.value))}
               value={searchTerm}
             />
             <SearchText className={searchTerm === "" ? "" : "up"}>
@@ -187,7 +187,7 @@ export const Search: React.FC<Props> = ({
               setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
               onClick && onClick(e);
 
-              setSearchTerm("");
+              dispatch(setSearchTerm(""));
             }}
           >
             {isRippling ? (

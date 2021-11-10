@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { keyframes } from "styled-components";
 import styled from "styled-components";
+import { RootState } from "../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setToggle } from "../features/counter/toggleSlice";
 
 type Props = {
-  selected: string;
-  setSelected: (selected: string) => void;
   onClick: (click: any) => void;
 };
 
@@ -119,11 +120,7 @@ const Content = styled.span`
   z-index: 2;
 `;
 
-export const Buttons: React.FC<Props> = ({
-  selected,
-  setSelected,
-  onClick,
-}) => {
+export const Buttons: React.FC<Props> = ({ onClick }) => {
   // State Ripple Left //
   const [coordsLeft, setCoordsLeft] = useState({ x: -1, y: -1 });
   const [isRipplingLeft, setIsRipplingLeft] = useState(false);
@@ -156,19 +153,22 @@ export const Buttons: React.FC<Props> = ({
     if (!isRipplingRight) setCoordsRight({ x: -1, y: -1 });
   }, [isRipplingRight]);
 
+  const toggle = useSelector((state: RootState) => state.search.value);
+  const dispatch = useDispatch();
+
   return (
     <ButtonCrew>
       <ButtonStockLeft
-        className={selected === "in" ? "active" : undefined}
+        className={toggle === "in" ? "active" : undefined}
         onClick={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           setCoordsLeft({ x: e.clientX - rect.left, y: e.clientY - rect.top });
           onClick && onClick(e);
 
-          if (selected === "in") {
-            setSelected("none");
+          if (toggle === "in") {
+            dispatch(setToggle("none"));
           } else {
-            setSelected("in");
+            dispatch(setToggle("in"));
           }
         }}
       >
@@ -185,16 +185,16 @@ export const Buttons: React.FC<Props> = ({
         <Content>IN STOCK</Content>
       </ButtonStockLeft>
       <ButtonStockRight
-        className={selected === "out" ? "active" : undefined}
+        className={toggle === "out" ? "active" : undefined}
         onClick={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           setCoordsRight({ x: e.clientX - rect.left, y: e.clientY - rect.top });
           onClick && onClick(e);
 
-          if (selected === "out") {
-            setSelected("none");
+          if (toggle === "out") {
+            dispatch(setToggle("none"));
           } else {
-            setSelected("out");
+            dispatch(setToggle("out"));
           }
         }}
       >
