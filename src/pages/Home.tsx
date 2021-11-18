@@ -31,7 +31,7 @@ const HomeCardGrid = styled.div`
     grid-template-columns: 50% 50%;
   }
 
-  @media screen and (togglemax-width: 576px) {
+  @media screen and (max-width: 576px) {
     grid-template-columns: 100%;
   }
 `;

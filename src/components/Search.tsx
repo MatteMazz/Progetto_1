@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { RootState } from "../app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { keyframes } from "styled-components";
 import styled from "styled-components";
-import { setSearchTerm } from "../features/slicers/searchSlice";
-
-type Props = {
-  onClick: (click: any) => void;
-};
+import { selectSearch, setSearchTerm } from "../features/slicers/searchSlice";
 
 const FlexContainer = styled.div`
   display: flex;
@@ -147,8 +142,12 @@ const BlueButton = styled.button`
   }
 `;
 
+type Props = {
+  onClick: (click: any) => void;
+};
+
 export const Search: React.FC<Props> = ({ onClick }) => {
-  const searchTerm = useSelector((state: RootState) => state.search.value);
+  const searchTerm = useSelector(selectSearch);
   const dispatch = useDispatch();
 
   const [coords, setCoords] = useState({ x: -1, y: -1 });

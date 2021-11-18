@@ -1,4 +1,4 @@
-import { Prod } from "../components/SingleProduct";
+import { DetailContent } from "../components/DetailContent";
 import { Product } from "../data/Data";
 import { useParams } from "react-router-dom";
 
@@ -10,5 +10,5 @@ export const Detail: React.FC<Props> = ({ data }) => {
   const { UPC } = useParams<{ UPC: string }>();
   const prods = data.find((prod) => prod.UPC === UPC);
 
-  return prods ? <Prod prod={prods} det={true} /> : null;
+  return prods ? <DetailContent prod={prods} /> : null;
 };

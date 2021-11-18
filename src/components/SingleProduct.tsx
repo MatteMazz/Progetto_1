@@ -2,11 +2,6 @@ import { Product } from "../data/Data";
 import { CssBaseline } from "@mui/material";
 import styled from "styled-components";
 
-type Props = {
-  prod: Product;
-  det: boolean;
-};
-
 const CardProd = styled.div`
   width: 97%;
   margin: 0 auto;
@@ -65,6 +60,11 @@ const CardInStock = styled.span`
 const CardOutStock = styled.span`
   display: none;
 `;
+
+type Props = {
+  prod: Product;
+  det: boolean;
+};
 
 export const Prod: React.FC<Props> = ({ prod, det }) => {
   return (

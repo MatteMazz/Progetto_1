@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { keyframes } from "styled-components";
 import styled from "styled-components";
-import { RootState } from "../app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setToggle } from "../features/slicers/toggleSlice";
+import { selectToggle, setToggle } from "../features/slicers/toggleSlice";
 
 type Props = {
   onClick: (click: any) => void;
@@ -153,7 +152,7 @@ export const Buttons: React.FC<Props> = ({ onClick }) => {
     if (!isRipplingRight) setCoordsRight({ x: -1, y: -1 });
   }, [isRipplingRight]);
 
-  const toggle = useSelector((state: RootState) => state.toggle.value);
+  const toggle = useSelector(selectToggle);
   const dispatch = useDispatch();
 
   return (

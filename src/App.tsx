@@ -21,7 +21,7 @@ export const App: React.FC = () => {
         <Detail data={data} />
       </Route>
       <Route path="/">
-        <Home data={data}></Home>
+        <Home data={data} />
       </Route>
     </Switch>
   );
