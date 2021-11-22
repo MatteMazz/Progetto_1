@@ -14,14 +14,14 @@ const Container = styled.div`
 
 const HomeCardContainer = styled.div`
   width: 99%;
-  margin: 20px auto 0 auto;
+  margin: 2rem auto 0 auto;
   padding-bottom: 80px;
 `;
 
 const HomeCardGrid = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  row-gap: 15px;
+  row-gap: 1.5rem;
 
   @media screen and (max-width: 1200px) {
     grid-template-columns: 33.3% 33.3% 33.3%;

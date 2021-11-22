@@ -238,3 +238,4 @@ export const DetailContent: React.FC<Props> = ({ prod }) => {
     </Container>
   ) : null;
 };
+  

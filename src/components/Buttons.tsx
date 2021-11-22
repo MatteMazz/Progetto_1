@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { keyframes } from "styled-components";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToggle, setToggle } from "../features/slicers/toggleSlice";
 
